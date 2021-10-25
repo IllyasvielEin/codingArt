@@ -4,5 +4,6 @@ project(codingArt)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(codingArt
-        straddle.cpp
-        )
+#        exp2/straddle.cpp
+        exp5/roboWalk.cpp
+        exp5/password.cpp)
