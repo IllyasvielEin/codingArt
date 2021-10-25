@@ -61,7 +61,6 @@ int main() {
 //                cout << g[i] << "\n";
             }
             printf("encrypted: %s.\n", ans.c_str());
-            delete g;
         }
         else {
             cin >> s;
@@ -78,8 +77,6 @@ int main() {
             for (int i = 0; i<e ; ++i) {
                 cout << g[i] << "\n";
             }
-            delete idx;
-            delete g;
         }
     }
 

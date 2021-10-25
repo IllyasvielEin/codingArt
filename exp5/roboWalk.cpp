@@ -128,9 +128,9 @@ int main() {
     Init();
     //    show(1);
     //    show(2);
-    int t;
     cin >> x >> y;
     x--; y--;
+    int t;
     cin >> t;
     mapGo(t);
     return 0;
