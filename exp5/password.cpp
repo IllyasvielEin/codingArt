@@ -5,7 +5,7 @@
 using namespace std;
 string s;
 string *g;
-
+int* idx;
 int e;
 
 void ts(string& str) {
@@ -20,8 +20,8 @@ void ts(string& str) {
 }
 
 int findidx(const string &str, char c) {
-    for (int i = int(str.size()) - 1; i >= 0; i--) {
-        if (str[i]==c) return i;
+    for (int i = 0; i <e ; i++) {
+        if (!idx[i]&&str[i]==c) return i;
     }
     return -1;
 }
@@ -29,11 +29,13 @@ int findidx(const string &str, char c) {
 string scan(const string& str) {
     string ans;
     ans+=s[0];
+    idx[0] = 1;
     char c = str[0];
     ans+=c;
     int i;
     do {
         i = findidx(s, c);
+        idx[i] = 1;
         c = str[i];
         ans+=c;
     } while(ans.size()<e);
@@ -59,19 +61,25 @@ int main() {
 //                cout << g[i] << "\n";
             }
             printf("encrypted: %s.\n", ans.c_str());
+            delete g;
         }
         else {
             cin >> s;
             e = int(s.size());
+            g = new string[s.size()];
+            idx = new int[e];
+            memset(idx, 0, e);
             string ms = s;
             sort(ms.begin(), ms.end());
-//            cout << ms;
+//            cout << ms << '\n';
             auto ans = scan(ms);
             ts(ans);
-            printf("Possible solution:\n");
+            printf("Possible password:\n");
             for (int i = 0; i<e ; ++i) {
                 cout << g[i] << "\n";
             }
+            delete idx;
+            delete g;
         }
     }
 
