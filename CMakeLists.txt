@@ -7,5 +7,6 @@ add_executable(codingArt
 #        exp3/straddle.cpp
 #        exp5/roboWalk.cpp
 #        exp5/password.cpp
-        exp3/crossHouse.cpp
-        )
+#        exp3/crossHouse.cpp
+        exp4/LCS.cpp
+        exp4/submatrixSum.cpp)

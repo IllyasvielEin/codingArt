@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#define T 127
+#define MAX 127
 using namespace std;
 int n;
 struct wall {
@@ -35,7 +35,7 @@ void addEdge(int a, int b, int w1y, int w2y) {
 
 void Init() {
     cin>>n;
-    memset(e,T,sizeof(e));
+    memset(e,MAX,sizeof(e));
     for (int i=1;i<=n;i++)
     {
         cin>>w[i].x;
