@@ -21,11 +21,7 @@ void Init() {
 }
 
 bool canPlace(int y, int x) {
-    if ( column[x] || lDia[n-(y-x)-1] || rDia[x+y] ) {
-        return false;
-    } else {
-        return true;
-    }
+    return ! ( column[x] || lDia[n-(y-x)-1] || rDia[x+y] );
 }
 
 int check(int y, int nex = 0) {

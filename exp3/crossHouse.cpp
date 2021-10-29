@@ -62,7 +62,7 @@ void Init() {
 int main()
 {
     Init();
-    //floyd算法
+    //floyd
     for (int k=1;k<=n*4+4;k++)
         for (int i=1;i<=n*4+4;i++)
             for (int j=1;j<=n*4+4;j++)
