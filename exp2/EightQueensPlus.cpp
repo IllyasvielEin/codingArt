@@ -80,4 +80,5 @@ int main() {
     auto end = clock();
     printf("cost time: %ld ms\n", (end-begin) );
     cout << ans;
+    return 0;
 }
