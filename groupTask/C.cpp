@@ -4,101 +4,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class graphNode {
-private:
-    int pos{};
-    int value{-1};
-    int cnt{-1};
-    vector<graphNode> conList;
+long num[1001];
+int pre[1001];
+int Rank[1001];
 
-public:
-    graphNode() = default;
-
-    void setValue(int v) {
-        value = v;
+void init(int n) {
+    for(int i = 0; i < n; i++){
+        pre[i] = i;
+        Rank[i] = 1;
     }
+}
 
-    void setCnt(int _cnt) {
-        cnt = _cnt;
+int find(int x) {
+    if(pre[x] == x) return x;
+    return pre[x] = find(pre[x]);
+}
+
+bool isSame(int x, int y) {
+    return find(x) == find(y);
+}
+
+bool join(int x,int y) {
+    x = find(x);
+    y = find(y);
+    if(x == y) return false;
+    if(Rank[x] > Rank[y]) pre[y]=x;
+    else {
+        if(Rank[x]==Rank[y]) Rank[y]++;
+        pre[x]=y;
     }
-
-    void setPos(int p) {
-        pos = p;
-    }
-
-    int getvalue() const {
-        return value;
-    }
-
-    int getCnt() const {
-        return cnt;
-    }
-
-    int getPos() const {
-        return pos;
-    }
-
-    void connect(const graphNode& gp2) {
-        cnt++;
-        conList.push_back(gp2);
-    }
-
-    vector<graphNode> getConnections() {
-        return conList;
-    }
-
-    bool more(const graphNode& gp2) const {
-        return value > gp2.value;
-    }
-
-
-};
+    return true;
+}
 
 int main() {
-    int n, tmpNum;
+    int n;
+    map<int, int> ans;
     cin >> n;
-    auto* array = new graphNode[n];
+    init(n);
     for (int i = 0; i < n; ++i) {
-        cin >> tmpNum;
-        array[i].setValue(tmpNum);
-        array[i].setCnt(0);
-        array[i].setPos(i);
+        cin>>num[i];
     }
-
-    for ( int i = 0; i < n; ++i ) {
-        for (int j = i+1; j < n; ++j) {
-            if ( array[i].more(array[j]) ) {
-                array[i].connect(array[j]);
-                array[j].connect(array[i]);
+    for (int i = 0; i < n; i++)
+        for (int j = i+1; j < n; ++j)
+            if(num[i]>num[j]) {
+                join(i,j);
             }
-        }
+    for (int i = 0; i < n; ++i) {
+        if( ans.find(pre[i])==ans.end() ) ans[pre[i]]=1;
+        else ans[pre[i]]++;
     }
-
-    int max = array[0].getCnt(), location = 0;
-    for (int i = 1; i < n; ++i) {
-        if ( array[i].getCnt()>max ) {
-            location = i;
-            max = array[i].getCnt();
-        }
-    }
-
-    int *idx = new int[n]{0};
-    idx[location] = 1;
-    int ans = 1;
-    stack<graphNode> st;
-    st.push(array[location]);
-    do {
-        auto tmp = st.top();
-        st.pop();
-        for (int i = 0; i < tmp.getCnt(); ++i) {
-            if ( !idx[tmp.getConnections()[i].getPos()] ) {
-                st.push(tmp.getConnections()[i]);
-                idx[tmp.getConnections()[i].getPos()] = 1;
-                ans++;
-            }
-        }
-    } while ( !st.empty() );
-
-    printf("%d", ans);
+    printf("%d", ans.begin()->second);
     return 0;
 }

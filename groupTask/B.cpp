@@ -2,7 +2,6 @@
 // Created by Illyasviel on 2021/10/3.
 //
 #include <bits/stdc++.h>
-#include <map>
 using namespace std;
 
 void read(int *ans, int n) {

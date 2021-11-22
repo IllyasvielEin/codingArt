@@ -2,7 +2,6 @@
 // Created by Illyasviel on 2021/10/5.
 //
 #include <bits/stdc++.h>
-#include <map>
 using namespace std;
 
 void operate1(string& a, vector<string>& stage, int t, int x, char y) {

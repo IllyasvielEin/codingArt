@@ -21,7 +21,7 @@ void ts(string& str) {
 
 int findidx(const string &str, char c) {
     for (int i = 0; i <e ; i++) {
-        if (!idx[i]&&str[i]==c) return i;
+        if (str[i]==c&&!idx[i]) return i;
     }
     return -1;
 }

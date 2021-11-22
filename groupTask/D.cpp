@@ -34,28 +34,12 @@ public:
 
     explicit enemy(int h, int n, int t) : unit(h), needAttack(n), type(t) {};
 
-    void setHealth(int h) {
-        health = h;
-    }
-
-    void setHNeedAtt(int na) {
-        needAttack = na;
-    }
-
-    void setType(int t) {
-        type = t;
-    }
-
     int getHealth() const {
         return health;
     }
 
     int getNeedAtt() const {
         return needAttack;
-    }
-
-    int getType() const {
-        return type;
     }
 
     int getCost() const {
@@ -73,10 +57,6 @@ public:
 
     int getHealth() const {
         return health;
-    }
-
-    void setHealth(int h) {
-        health = h;
     }
 };
 
